@@ -1,7 +1,16 @@
 print("WELCOME")
 start = "y"
-
 comments = []
+
+#copied part starts
+from hashlib import sha256
+
+def create_hash(password):
+    pw_bytestring = password.encode()
+    return sha256(pw_bytestring).hexdigest()
+#copied part ends
+
+mypassword = '981ff4a93dbb05d76d4cd34d3fb0f493db0145d653ee56cbb71a93853adcef4e'
 
 while start == "y":
 	
@@ -17,8 +26,20 @@ while start == "y":
 			else:
 				print(allcomments)
 		else:
-			allcomments = comments + [comment]
-			comments = allcomments
+			while True:
+				password = input("Please enter your password(type g to give up):")
+				if password == "e":
+					break
+				userinput = create_hash(password)
+				
+				if userinput == mypassword:
+					allcomments = comments + [comment]
+					comments = allcomments
+					break
+				else:
+					message = "Your password is not true"
+					print(message)
+            
 
 	a = input("Are you sure(y/n):")
 	if a == "n":
