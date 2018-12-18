@@ -1,0 +1,80 @@
+body{
+	background-color:white;
+	font-family:serif;
+}
+
+h1{
+	text-align:center;
+	color:red;
+	font-size:40px;
+}
+
+#logo{
+	padding:10px;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+#menu{
+	color:rebeccapurple;
+	font-size:30px;
+	text-align:center;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+.span{
+	color:orange;
+}
+
+.homep{
+	text-align:center;
+}
+
+.dt{
+	color:blue;
+}
+
+.dd{
+	text-align:center;
+}
+
+#maincharacters{
+	color:purple;
+	text-align:center;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+#maincharacters *{
+		border:2px dotted orange;
+}
+
+#movies{
+	text-align:center;
+}
+
+#li{
+	border-bottom:solid;
+	border-top:solid;
+	border-color:green;
+	color:darkblue;
+	font-size:20px;
+}
+
+.li{
+	border-bottom:solid;
+	border-color:green;
+	color:darkblue;
+	font-size:20px;
+}
+
+#gallery{
+	margin-left:auto;
+	margin-right:auto;
+}
+
+.resources{
+	color:red;
+	list-style-type:square;
+}

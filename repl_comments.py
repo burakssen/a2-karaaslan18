@@ -10,7 +10,7 @@ def create_hash(password):
     return sha256(pw_bytestring).hexdigest()
 #copied part ends
 
-mypassword = '981ff4a93dbb05d76d4cd34d3fb0f493db0145d653ee56cbb71a93853adcef4e'
+mypassword = 'de8f8396402c' + '642d8b144c86' + '8798b693a6367d1ae83' + 'd3d329ce4c73544c77e79'
 
 while start == "y":
 	
@@ -28,7 +28,7 @@ while start == "y":
 		else:
 			while True:
 				password = input("Please enter your password(type g to give up):")
-				if password == "e":
+				if password == "g":
 					break
 				userinput = create_hash(password)
 				

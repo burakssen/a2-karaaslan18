@@ -5,29 +5,29 @@
 ### The landing page for assignment 3 should be at /
 #####################################################################
 
-from bottle import route, run, default_app, debug
+from bottle import route, run, default_app, debug, static_file
+from htmlfiles.index import index
+from htmlfiles.characters import characters
+from htmlfiles.actors import actors
+from htmlfiles.movies import movies
+from htmlfiles.gallery import gallery
+from htmlfiles.bibliography import bibliography
 
-def htmlify(title,text):
-    page = """
-        <!doctype html>
-        <html lang="en">
-            <head>
-                <meta charset="utf-8" />
-                <title>%s</title>
-            </head>
-            <body>
-            %s
-            </body>
-        </html>
+def server_static(path):
+	return static_file(path, root='./htmlfiles')
 
-    """ % (title,text)
-    return page
-
-def index():
-    return htmlify("My lovely website",
-                   "This is going to be an awesome website, when it is finished.")
+def img_static(path):
+	return static_file(path, root='./htmlfiles/z')
 
 route('/', 'GET', index)
+route('/index.html', 'GET', index)
+route('/characters.html', 'GET', characters)
+route('/actors.html', 'GET', actors)
+route('/movies.html', 'GET', movies)
+route('/gallery.html', 'GET', gallery)
+route('/bibliography.html', 'GET', bibliography)
+route('/<path>', 'GET', server_static)
+route('/z/<path>', 'GET', img_static)
 
 #####################################################################
 ### Don't alter the below code.
