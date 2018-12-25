@@ -1,17 +1,19 @@
 
+
 #####################################################################
 ### Assignment skeleton
 ### You can alter the below code to make your own dynamic website.
 ### The landing page for assignment 3 should be at /
 #####################################################################
 
-from bottle import route, run, default_app, debug, static_file
+from bottle import route, run, default_app, debug, static_file, request
 from htmlfiles.index import index
 from htmlfiles.characters import characters
 from htmlfiles.actors import actors
 from htmlfiles.movies import movies
 from htmlfiles.gallery import gallery
 from htmlfiles.bibliography import bibliography
+from htmlfiles.index import is_it_true
 
 def server_static(path):
 	return static_file(path, root='./htmlfiles')
@@ -28,6 +30,8 @@ route('/gallery.html', 'GET', gallery)
 route('/bibliography.html', 'GET', bibliography)
 route('/<path>', 'GET', server_static)
 route('/z/<path>', 'GET', img_static)
+route('/', 'POST', is_it_true)
+
 
 #####################################################################
 ### Don't alter the below code.

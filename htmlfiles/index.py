@@ -1,5 +1,4 @@
-def index():
-	page="""
+page="""
 <!DOCTYPE html>
 	
 <html lang="en">
@@ -83,8 +82,56 @@ def index():
 		thousands written by authors other than Conan Doyle being
 		adapted into stage and radio plays, television, films,
 		video games, and other media for over one hundred years.</p>
-	
+        
+        <form action="/" method="post">
+            <fieldset>
+                <legend>Would you like say anything</legend>
+                What is your comment?
+                <br>
+                <input type="text" name="comment">
+                <br>
+                Enter your password please.
+                <br>
+                <input tppe="text" name="password">
+                <br>
+                <input type=submit value="SEND/SEE">
+            </fieldset>
+        </form>
+        
+        <ul>
+			%s
+        </ul>
 	</body>
 </html>
 """
-	return page
+def index():
+	return page %("")
+
+    
+#this part is taken from
+# https://bitbucket.org/damienjadeduff/hashing_example/raw/master/hash_password.py
+from hashlib import sha256
+
+def create_hash(password):
+    pw_bytestring = password.encode()
+    return sha256(pw_bytestring).hexdigest()
+########
+
+from bottle import request
+
+mypassword = '7978e446e2beb4901aa02ce2aa0c235d1c745d9a3235e8a0a60661962736769c'
+
+comments = []
+
+def is_it_true():
+	global comments
+	a = request.forms.get('comment')
+	b = request.forms.get('password')
+	
+	if create_hash(b) == mypassword:
+		comments = comments + [a]
+		
+	end = ""
+	for com in comments:
+		end += "<li>" + com + "</li>"
+	return page %(end)
