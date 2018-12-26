@@ -118,7 +118,7 @@ def create_hash(password):
 
 from bottle import request
 
-mypassword = '7978e446e2beb4901aa02ce2aa0c235d1c745d9a3235e8a0a60661962736769c'
+mypassword = 'f155a9176a400fd61286391e4cb7dfba3b139fffcf6bc219cd258981cc01c628'
 
 comments = []
 end = ""
@@ -130,8 +130,9 @@ def is_it_true():
 	
 	if create_hash(b) == mypassword:
 		comments = comments + [a]
-		
+	
 	end = ""
 	for com in comments:
 		end += "<li>" + com + "</li>"
+	
 	return page %(end)
