@@ -14,6 +14,7 @@ from htmlfiles.movies import movies
 from htmlfiles.gallery import gallery
 from htmlfiles.bibliography import bibliography
 from htmlfiles.index import is_it_true
+from htmlfiles.characters import favourite
 
 def server_static(path):
 	return static_file(path, root='./htmlfiles')
@@ -30,8 +31,8 @@ route('/gallery.html', 'GET', gallery)
 route('/bibliography.html', 'GET', bibliography)
 route('/<path>', 'GET', server_static)
 route('/z/<path>', 'GET', img_static)
-route('/', 'POST', is_it_true)
-
+route('/index.html', 'POST', is_it_true)
+route('/characters.html', 'POST', favourite)
 
 #####################################################################
 ### Don't alter the below code.

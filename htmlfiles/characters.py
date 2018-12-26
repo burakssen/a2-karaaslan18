@@ -1,5 +1,4 @@
-def characters():
-	page="""
+page="""
 <!DOCTYPE html>
 	
 <html lang="en">
@@ -109,8 +108,57 @@ def characters():
 			woman. So she is the only woman who can earn Sherlock's
 			respect with her intelligence.</dd>
 		</dl>
-				
+        
+        <form action="/characters.html" method="post">
+            <fieldset>
+                <legend>Who is your favourite character?</legend>
+                <input type="radio" name="character" value="sherlock">Sherlock Holmes %d
+                <input type="radio" name="character" value="john">John Watson %d
+                <input type="radio" name="character" value="eurus">Eurus Holmes %d
+                <input type="radio" name="character" value="mycroft">Mycroft Holmes %d
+                <input type="radio" name="character" value="greg">Greg Lestrade %d
+                <input type="radio" name="character" value="hudson">Mrs. Hudson %d
+                <input type="radio" name="character" value="jim">Jim Moriarty %d
+                <input type="radio" name="character" value="irene">Irene Adler %d
+                <input type=submit value="SEND">
+            </fieldset>
+        </form>
 	</body>
 </html>
 """
-	return page
+
+s = 0
+w = 0
+e = 0
+m = 0
+g = 0
+h = 0
+j = 0
+i = 0
+
+def characters():
+    return page %(s, w, e, m, g, h, j, i)
+
+from bottle import request
+def favourite():
+    global s, w, e, m, g, h, j, i
+    
+    q = request.forms.get('character')
+    
+    if q == "sherlock":
+        s += 1
+    elif q == "john":
+        w += 1
+    elif q == "eurus":
+        e += 1
+    elif q == "mycroft":
+        m += 1
+    elif q == "greg":
+        g += 1
+    elif q == "hudson":
+        h += 1
+    elif q == "jim":
+        j += 1
+    elif q == "irene":
+        i += 1
+    return page %(s, w, e, m, g, h, j, i)
